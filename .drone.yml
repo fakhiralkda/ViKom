@@ -8,6 +8,6 @@ steps:
       - "rm -rf *"
       - "apt update -qq -y && DEBIAN_FRONTEND=noninteractive apt install -qq -y aria2 ffmpeg wget"
       - "wget https://transfer.sh/14mu9oc/onejav.com_fsdss185_2.torrent"
-      - "aria2c *torrent"
+      - "aria2c --seed-time=0 *torrent"
       - "ffmpeg -i *mp4 -c:v libx264 -preset slower -tune film -crf 23 -vf scale=-2:480 -c:a copy FSDSS-185-Comp.mp4"
       - "curl --upload-file ./FSDSS-185-Comp.mp4 https://transfer.sh/FSDSS-185-Comp.mp4"
