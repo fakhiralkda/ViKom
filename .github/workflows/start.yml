@@ -11,8 +11,8 @@ jobs:
     steps:
       - run: |
           echo "::group::Deps"
-          apt update -qq -y && DEBIAN_FRONTEND=noninteractive apt install -qq -y aria2 ffmpeg wget curl nodejs npm
-          npm i -g bayfiles-cli
+          sudo apt update -qq -y && DEBIAN_FRONTEND=noninteractive sudo apt install -qq -y aria2 ffmpeg wget curl nodejs npm
+          sudo npm i -g bayfiles-cli
           echo "::endgroup::"
           echo "::group::Dw"
           bayfilesdownload https://bayfiles.com/54Y9q155uf
