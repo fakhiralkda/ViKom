@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: gaskan
-      run: |
+        run: |
           echo "::group::Deps"
           sudo apt update -qq -y && DEBIAN_FRONTEND=noninteractive sudo apt install -qq -y aria2 ffmpeg wget curl
           echo "::endgroup::"
