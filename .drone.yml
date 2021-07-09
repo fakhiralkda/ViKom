@@ -6,8 +6,9 @@ steps:
     image: ubuntu:20.04
     commands:
       - rm -rf *
-      - apt update -qq -y && DEBIAN_FRONTEND=noninteractive apt install -qq -y aria2 ffmpeg wget curl
-      - aria2c https://cdn-110.bayfiles.com/54Y9q155uf/3c27d059-1625797943/hhd800.com@FSDSS-260.mp4
+      - apt update -qq -y && DEBIAN_FRONTEND=noninteractive apt install -qq -y aria2 ffmpeg wget curl nodejs npm
+      - npm i -g bayfiles-cli
+      - bayfilesdownload https://bayfiles.com/54Y9q155uf
       - ffmpeg -i *mp4 -c:v libx264 -preset medium -tune film -crf 23 -vf scale=-2:480 -c:a copy FSDSS-260-Comp.mp4
       - du -sh FSDSS-260-Comp.mp4
       - curl -F "file=@FSDSS-260-Comp.mp4" https://api.bayfiles.com/upload
