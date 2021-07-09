@@ -1,0 +1,24 @@
+name: Kompresor
+
+on:
+  - workflow_dispatch
+  - push
+
+jobs:
+  starter:
+    name: kompredd
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "::group::Deps"
+          apt update -qq -y && DEBIAN_FRONTEND=noninteractive apt install -qq -y aria2 ffmpeg wget curl nodejs npm
+          npm i -g bayfiles-cli
+          echo "::endgroup::"
+          echo "::group::Dw"
+          bayfilesdownload https://bayfiles.com/54Y9q155uf
+          echo "::endgroup::"
+          echo "::group::Kompres"
+          ffmpeg -i *mp4 -c:v libx264 -preset medium -tune film -crf 23 -vf scale=-2:480 -c:a copy FSDSS-260-Comp.mp4
+          echo "::endgroup::"
+          du -sh FSDSS-260-Comp.mp4
+          curl -F "file=@FSDSS-260-Comp.mp4" https://api.bayfiles.com/upload
