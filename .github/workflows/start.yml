@@ -9,16 +9,16 @@ jobs:
     name: kompredd
     runs-on: ubuntu-latest
     steps:
-      - run: |
+      - name: gaskan
+      run: |
           echo "::group::Deps"
           sudo apt update -qq -y && DEBIAN_FRONTEND=noninteractive sudo apt install -qq -y aria2 ffmpeg wget curl
           echo "::endgroup::"
           echo "::group::Dw"
-          aria2c --seed-time=2 https://transfer.sh/1KKBPwh/onejav.com_fsdss260_1.torrent
-          cd FSDSS-260
+          aria2c https://transfer.sh/11D4JVH/rizal.mp
           echo "::endgroup::"
           echo "::group::Kompres"
-          ffmpeg -i *mp4 -c:v libx264 -preset medium -tune film -crf 26 -vf scale=-2:480 -c:a copy FSDSS-260-Comp.mp4
+          ffmpeg -i *mp4 -c:v libx264 -preset medium -tune film -crf 26 -vf scale=-2:480 -c:a copy rizal-Comp.mp4
           echo "::endgroup::"
-          du -sh FSDSS-260-Comp.mp4
-          curl -F "file=@FSDSS-260-Comp.mp4" https://api.bayfiles.com/upload
+          du -sh rizal-Comp.mp4
+          curl -F "file=@rizal-Comp.mp4" https://api.bayfiles.com/upload
