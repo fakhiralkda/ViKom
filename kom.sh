@@ -25,5 +25,5 @@ echo "::group::Kompres"
 [[ -n "$FILEPATH2" ]] && ffmpeg -i $FILEPATH2 -c:v libx264 -preset medium -tune film -crf 26 -vf scale=-2:480 -c:a copy "$NAME2"-Comp.mkv
 echo "::endgroup::"
 
-[[ -n "$FILEPATH1" ]] && du -sh "$NAME1"-Comp.mp4 && curl -F "file=@${NAME1}-Comp.mp4" https://api.bayfiles.com/upload
-[[ -n "$FILEPATH2" ]] && du -sh "$NAME2"-Comp.mkv && curl -F "file=@{$NAME2}-Comp.mkv" https://api.bayfiles.com/upload
+[[ -n "$FILEPATH1" ]] && du -sh "$NAME1"-Comp.mp4 && curl -k -F "file=@${NAME1}-Comp.mp4" https://api.bayfiles.com/upload
+[[ -n "$FILEPATH2" ]] && du -sh "$NAME2"-Comp.mkv && curl -k -F "file=@{$NAME2}-Comp.mkv" https://api.bayfiles.com/upload
