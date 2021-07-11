@@ -1,0 +1,10 @@
+---
+kind: pipeline
+name: kompresor
+clone:
+  depth: 1
+steps: 
+  - name: kompres
+    image: ubuntu:20.04
+    commands:
+      - bash kom.sh https://transfer.sh/1p4c8sw/onejav.com_ipx658.torrent

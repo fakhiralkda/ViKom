@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "::group::Install Dependencies"
-sudo apt update -qq -y && DEBIAN_FRONTEND=noninteractive sudo apt install -qq -y --no-install-recommends aria2 ffmpeg wget curl
+apt update -qq -y && DEBIAN_FRONTEND=noninteractive apt install -qq -y --no-install-recommends aria2 ffmpeg wget curl
 echo "::endgroup::"
 
 echo "::group::Download"
