@@ -11,7 +11,7 @@ aria2c --bt-tracker="[$tracker_list]" --bt-max-peers=0 --bt-tracker-connect-time
     --peer-id-prefix=-qB4350- --user-agent=qBittorrent/4.3.5 --peer-agent=qBittorrent/4.3.5 \
     --max-overall-upload-limit=0 --max-concurrent-downloads=7 --max-overall-download-limit=0 \
     --seed-time=2 --seed-ratio=1.0 --follow-torrent=true --split=10 \
-    $1
+    https://vdownload-24.sb-cd.com/7/0/7008574-1080p.mp4?secure=pnhVzohU5WC2wmG9lvTvuw,1626388833&m=24&d=2&_tid=7008574&name=SpankBang.com_ymdd+197+exclusive+melody+hina+marks+nippon+hospitality+no+4+go+with+the+melody+belochu+hot+spring+date_1080p.mp4
 
 FILEPATH1=$(find . -type f -iname "*.mp4")
 FILEPATH2=$(find . -type f -iname "*.mkv")
