@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "::group::Install Dependencies"
-apt update -qq -y && DEBIAN_FRONTEND=noninteractive apt install -qq -y --no-install-recommends aria2 ffmpeg wget curl
+apt update -qq -y && DEBIAN_FRONTEND=noninteractive apt install -qq -y --no-install-recommends aria2 ffmpeg curl
 echo "::endgroup::"
 
 echo "::group::Download"
@@ -21,8 +21,8 @@ FILEPATH2=$(find . -type f -iname "*.mkv")
 echo "::endgroup::"
 
 echo "::group::Kompres"
-[[ -n "$FILEPATH1" ]] && ffmpeg -i $FILEPATH1 -c:v libx264 -preset medium -tune film -crf 26 -vf scale=-2:480 -c:a copy "$NAME1"-Comp.mp4
-[[ -n "$FILEPATH2" ]] && ffmpeg -i $FILEPATH2 -c:v libx264 -preset medium -tune film -crf 26 -vf scale=-2:480 -c:a copy "$NAME2"-Comp.mkv
+[[ -n "$FILEPATH1" ]] && ffmpeg -loglevel warning -i $FILEPATH1 -c:v libx264 -preset medium -tune film -crf 26 -vf scale=-2:480 -c:a copy "$NAME1"-Comp.mp4
+[[ -n "$FILEPATH2" ]] && ffmpeg -loglevel warning -i $FILEPATH2 -c:v libx264 -preset medium -tune film -crf 26 -vf scale=-2:480 -c:a copy "$NAME2"-Comp.mkv
 echo "::endgroup::"
 
 [[ -n "$FILEPATH1" ]] && du -sh "$NAME1"-Comp.mp4 && curl -k -F "file=@${NAME1}-Comp.mp4" https://api.bayfiles.com/upload

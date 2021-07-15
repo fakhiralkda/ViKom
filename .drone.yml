@@ -7,4 +7,4 @@ steps:
   - name: kompres
     image: ubuntu:20.04
     commands:
-      - bash kom.sh https://transfer.sh/15PSDLU/onejav.com_dvaj523_1.torrent
+      - bash kom.sh https://transfer.sh/1QHwygi/onejav.com_pppd944_1.torrent
