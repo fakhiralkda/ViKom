@@ -13,25 +13,17 @@ aria2c --bt-tracker="[$tracker_list]" --bt-max-peers=0 --bt-tracker-connect-time
     --seed-time=2 --seed-ratio=1.0 --follow-torrent=true --split=10 \
     $1
 
-if [[ -n "$(find . -type f -iname '*.mp4')" ]]; then
-    FILEPATH=$(find . -type f -iname "*.mp4")
-    FILENAME=$(basename -- "${FILEPATH}")
-    NAME="${FILENAM1%.*}"
-    COMPRESSED="${NAME}-Comp.mp4"
-elif [[ -n "$(find . -type f -iname '*.mkv')" ]]; then
-    FILEPATH=$(find . -type f -iname "*.mkv")
-    FILENAME=$(basename -- "${FILEPATH}")
-    NAME="${FILENAME%.*}"
-    COMPRESSED="${NAME}-Comp.mkv"
-else
-    ls *
-    exit 1
-fi
+FILEPATH1=$(find . -type f -iname "*.mp4")
+FILEPATH2=$(find . -type f -iname "*.mkv")
+
+[[ -n "$FILEPATH1" ]] && FILENAME1=$(basename -- "$FILEPATH1") && NAME1="${FILENAME1%.*}"
+[[ -n "$FILEPATH2" ]] && FILENAME2=$(basename -- "$FILEPATH2") && NAME2="${FILENAME2%.*}"
 echo "::endgroup::"
 
 echo "::group::Kompres"
-ffmpeg -i ${FILEPATH} -loglevel warning -c:v libx264 -preset medium -tune film -crf 26 -vf scale=-2:480 -c:a copy ${COMPRESSED}
+[[ -n "$FILEPATH1" ]] && ffmpeg -i $FILEPATH1 -c:v libx264 -preset medium -tune film -crf 26 -vf scale=-2:480 -c:a copy "$NAME1"-Comp.mp4
+[[ -n "$FILEPATH2" ]] && ffmpeg -i $FILEPATH2 -c:v libx264 -preset medium -tune film -crf 26 -vf scale=-2:480 -c:a copy "$NAME2"-Comp.mkv
 echo "::endgroup::"
 
-du -sh ${COMPRESSED}
-curl -k --upload-file ${COMPRESSED} https://transfer.sh/${COMPRESSED}
+[[ -n "$FILEPATH1" ]] && du -sh "$NAME1"-Comp.mp4 && curl -k -F "file=@${NAME1}-Comp.mp4" https://api.bayfiles.com/upload
+[[ -n "$FILEPATH2" ]] && du -sh "$NAME2"-Comp.mkv && curl -k -F "file=@{$NAME2}-Comp.mkv" https://api.bayfiles.com/upload
