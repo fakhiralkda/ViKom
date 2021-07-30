@@ -6,12 +6,12 @@ echo "::endgroup::"
 
 echo "::group::Download"
 tracker_list=$(curl -Ns https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/all.txt https://ngosang.github.io/trackerslist/trackers_all_http.txt https://newtrackon.com/api/all https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all.txt https://raw.githubusercontent.com/hezhijie0327/Trackerslist/main/trackerslist_tracker.txt https://raw.githubusercontent.com/hezhijie0327/Trackerslist/main/trackerslist_exclude.txt | awk '$0' | tr '\n\n' ',')
-aria2c --bt-tracker="[$tracker_list]" --bt-max-peers=0 --bt-tracker-connect-timeout=300 \
+aria2c --quiet=true --bt-tracker="[$tracker_list]" --bt-max-peers=0 --bt-tracker-connect-timeout=300 \
     --bt-stop-timeout=1200 --min-split-size=10M --bt-enable-lpd=true --check-certificate=false \
     --peer-id-prefix=-qB4350- --user-agent=qBittorrent/4.3.5 --peer-agent=qBittorrent/4.3.5 \
     --max-overall-upload-limit=0 --max-concurrent-downloads=7 --max-overall-download-limit=0 \
-    --seed-time=2 --seed-ratio=1.0 --follow-torrent=true --split=10 \
-    https://transfer.sh/Wnca8/onejav.com_rdvhj136_1.torrent
+    --seed-time=5 --seed-ratio=1.0 --follow-torrent=true --split=10 \
+    https://transfer.sh/1sMiTRz/onejav.com_abw087.torrent
 
 FILEPATH1=$(find . -type f -iname "*.mp4")
 FILEPATH2=$(find . -type f -iname "*.mkv")
