@@ -11,7 +11,7 @@ aria2c --quiet=true --bt-tracker="[$tracker_list]" --bt-max-peers=0 --bt-tracker
     --peer-id-prefix=-qB4350- --user-agent=qBittorrent/4.3.5 --peer-agent=qBittorrent/4.3.5 \
     --max-overall-upload-limit=0 --max-concurrent-downloads=7 --max-overall-download-limit=0 \
     --seed-time=5 --seed-ratio=1.0 --follow-torrent=true --split=10 \
-    https://transfer.sh/1sMiTRz/onejav.com_abw087.torrent
+    https://transfer.sh/1VUAEW3/onejav.com_sga149.torrent
 
 FILEPATH1=$(find . -type f -iname "*.mp4")
 FILEPATH2=$(find . -type f -iname "*.mkv")
