@@ -11,7 +11,7 @@ aria2c --quiet=true --bt-tracker="[$tracker_list]" --bt-max-peers=0 --bt-tracker
     --peer-id-prefix=-qB4350- --user-agent=qBittorrent/4.3.5 --peer-agent=qBittorrent/4.3.5 \
     --max-overall-upload-limit=0 --max-concurrent-downloads=7 --max-overall-download-limit=0 \
     --seed-time=5 --seed-ratio=1.0 --follow-torrent=true --split=10 \
-    https://cloud.mardiana.workers.dev/0://driveid-106464-terbit21-com-untold-scandal-2003.mp4
+    https://transfer.sh/JSTf9g/onejav.com_nsps537.torrent
 
 FILEPATH1=$(find . -type f -iname "*.mp4")
 FILEPATH2=$(find . -type f -iname "*.mkv")
