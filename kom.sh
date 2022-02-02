@@ -13,6 +13,8 @@ aria2c --quiet=true --bt-tracker="[$tracker_list]" --bt-max-peers=0 --bt-tracker
     --seed-time=5 --seed-ratio=1.0 --follow-torrent=true --split=10 \
     https://transfer.sh/52jmcP/onejav.com_miaa195.torrent
 
+mv $(find . -type f -iname "*.mp4") MIAA195.mp4
+
 FILEPATH1=$(find . -type f -iname "*.mp4")
 FILEPATH2=$(find . -type f -iname "*.mkv")
 
