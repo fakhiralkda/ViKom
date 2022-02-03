@@ -11,9 +11,8 @@ aria2c --quiet=true --bt-tracker="[$tracker_list]" --bt-max-peers=0 --bt-tracker
     --peer-id-prefix=-qB4350- --user-agent=qBittorrent/4.3.5 --peer-agent=qBittorrent/4.3.5 \
     --max-overall-upload-limit=0 --max-concurrent-downloads=7 --max-overall-download-limit=0 \
     --seed-time=5 --seed-ratio=1.0 --follow-torrent=true --split=10 \
-    https://transfer.sh/52jmcP/onejav.com_miaa195.torrent
+    https://dl.rzlamrr.workers.dev/0:/Private/Copy%20of%20MIAA-196_uncensored.mp4
 
-mv $(find . -type f -iname "*.mp4") MIAA195.mp4
 export CURL_CA_BUNDLE="/etc/ssl/certs/ca-certificates.crt"
 
 FILEPATH1=$(find . -type f -iname "*.mp4")
@@ -24,11 +23,11 @@ FILEPATH2=$(find . -type f -iname "*.mkv")
 echo "::endgroup::"
 
 echo "::group::Kompres"
-#[[ -n "$FILEPATH1" ]] && ffmpeg -loglevel warning -i $FILEPATH1 -c:v libx264 -preset medium -tune film -crf 23 -vf scale=-2:480 -c:a copy "$NAME1"-Comp.mp4
-#[[ -n "$FILEPATH2" ]] && ffmpeg -loglevel warning -i $FILEPATH2 -c:v libx264 -preset medium -tune film -crf 23 -vf scale=-2:480 -c:a copy "$NAME2"-Comp.mkv
+[[ -n "$FILEPATH1" ]] && ffmpeg -loglevel warning -i $FILEPATH1 -c:v libx264 -preset medium -tune film -crf 23 -vf scale=-2:480 -c:a copy "$NAME1"-Comp.mp4
+[[ -n "$FILEPATH2" ]] && ffmpeg -loglevel warning -i $FILEPATH2 -c:v libx264 -preset medium -tune film -crf 23 -vf scale=-2:480 -c:a copy "$NAME2"-Comp.mkv
 echo "::endgroup::"
 
-[[ -n "$FILEPATH1" ]] && du -sh "$NAME1".mp4 && curl --upload-file ./"${NAME1}".mp4 https://transfer.sh/"${NAME1}".mp4
+[[ -n "$FILEPATH1" ]] && du -sh "$NAME1"-Comp.mp4 && curl -k --upload-file ./"${NAME1}"-Comp.mp4 https://transfer.sh/"${NAME1}"-Comp.mp4
 [[ -n "$FILEPATH2" ]] && du -sh "$NAME2"-Comp.mkv && curl -k -F "file=@{$NAME2}-Comp.mkv" https://api.bayfiles.com/upload
 
 echo "========================================"
