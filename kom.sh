@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "::group::Install Dependencies"
-apt update -qq -y && DEBIAN_FRONTEND=noninteractive apt install -qq -y --no-install-recommends aria2 ffmpeg curl
+apt update -qq -y && DEBIAN_FRONTEND=noninteractive apt install -qq -y --no-install-recommends aria2 ffmpeg curl ca-certificates
 echo "::endgroup::"
 
 echo "::group::Download"
@@ -14,6 +14,7 @@ aria2c --quiet=true --bt-tracker="[$tracker_list]" --bt-max-peers=0 --bt-tracker
     https://transfer.sh/52jmcP/onejav.com_miaa195.torrent
 
 mv $(find . -type f -iname "*.mp4") MIAA195.mp4
+export CURL_CA_BUNDLE="/etc/ssl/certs/ca-certificates.crt"
 
 FILEPATH1=$(find . -type f -iname "*.mp4")
 FILEPATH2=$(find . -type f -iname "*.mkv")
