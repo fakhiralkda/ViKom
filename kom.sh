@@ -6,12 +6,7 @@ echo "::endgroup::"
 
 echo "::group::Download"
 tracker_list=$(curl -Ns https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/all.txt https://ngosang.github.io/trackerslist/trackers_all_http.txt https://newtrackon.com/api/all https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all.txt https://raw.githubusercontent.com/hezhijie0327/Trackerslist/main/trackerslist_tracker.txt https://raw.githubusercontent.com/hezhijie0327/Trackerslist/main/trackerslist_exclude.txt | awk '$0' | tr '\n\n' ',')
-aria2c --quiet=true --bt-tracker="[$tracker_list]" --bt-max-peers=0 --bt-tracker-connect-timeout=300 \
-    --bt-stop-timeout=1200 --min-split-size=10M --bt-enable-lpd=true --check-certificate=false \
-    --peer-id-prefix=-qB4350- --user-agent=qBittorrent/4.3.5 --peer-agent=qBittorrent/4.3.5 \
-    --max-overall-upload-limit=0 --max-concurrent-downloads=7 --max-overall-download-limit=0 \
-    --seed-time=5 --seed-ratio=1.0 --follow-torrent=true --split=10 \
-    https://dl.rzlamrr.workers.dev/0:/Private/Copy%20of%20MIAA-196_uncensored.mp4
+aria2c https://dl.rzlamrr.workers.dev/0:/Private/MIAA-195_uncensored.mp4
 
 export CURL_CA_BUNDLE="/etc/ssl/certs/ca-certificates.crt"
 
