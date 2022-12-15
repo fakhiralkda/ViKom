@@ -11,7 +11,7 @@ aria2c --bt-tracker="[$tracker_list]" --bt-max-peers=0 --bt-tracker-connect-time
 --bt-stop-timeout=1200 --min-split-size=10M --check-certificate=false \
 --max-overall-upload-limit=0 --max-concurrent-downloads=7 --max-overall-download-limit=0 \
 --seed-time=5 --seed-ratio=1.0 --follow-torrent=true --split=10 \
-https://transfer.sh/2eCF3h/onejav.com_stars734.torrent
+https://transfer.sh/0EdHGW/hhd800.com@STARS-734-Comp.mp4
 #yt-dlp https://spankbang.com/5y5vq/video/female+war+a+nasty+deal
 
 export CURL_CA_BUNDLE="/etc/ssl/certs/ca-certificates.crt"
